@@ -76,3 +76,6 @@ JavaScript (ES6)	DOM updates, book management, localStorage
 localStorage API	persistent data
 GitHub Pages	deployment
 IntelliJ / Codespaces	development
+
+
+
