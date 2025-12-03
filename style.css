@@ -1,0 +1,651 @@
+:root {
+    --bg: #f7f2ff;
+    --bg-card: #ffffff;
+    --accent: #b388ff;
+    --accent-soft: #e5d4ff;
+    --accent-strong: #ff9cf5;
+    --text: #2b213a;
+    --muted: #7b6a94;
+    --danger: #ff6b81;
+    --success: #4caf50;
+    --shadow-soft: 0 12px 30px rgba(40, 20, 70, 0.08);
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --transition: 0.2s ease;
+    --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+}
+
+/* Themes */
+
+body[data-theme="dark"] {
+    --bg: #0f0b1b;
+    --bg-card: #181326;
+    --accent: #c89bff;
+    --accent-soft: #3c2a5b;
+    --accent-strong: #ff6fd8;
+    --text: #f8f5ff;
+    --muted: #a296c4;
+    --shadow-soft: 0 14px 32px rgba(0, 0, 0, 0.7);
+}
+
+body[data-theme="paper"] {
+    --bg: #f6f0e5;
+    --bg-card: #fffaf0;
+    --accent: #c27c3f;
+    --accent-soft: #f1d4b3;
+    --accent-strong: #f5a623;
+    --text: #3d2d20;
+    --muted: #8a6f52;
+    --shadow-soft: 0 10px 26px rgba(80, 60, 40, 0.18);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background: radial-gradient(circle at top, #fef0ff, var(--bg) 35%, #e9f2ff);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+
+.app-header {
+    padding: 1.8rem 1rem 1.4rem;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    letter-spacing: 0.03em;
+}
+
+.app-header span {
+    font-size: 1.3em;
+}
+
+.tagline {
+    margin-top: 0.6rem;
+    color: var(--muted);
+}
+
+.theme-toggle {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.theme-btn {
+    border: 1px solid rgba(179, 136, 255, 0.5);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text);
+    transition: background var(--transition), transform var(--transition),
+    box-shadow var(--transition), border-color var(--transition);
+}
+
+.theme-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(40, 20, 70, 0.2);
+}
+
+body[data-theme="dark"] .theme-btn {
+    background: #231835;
+}
+
+body[data-theme="paper"] .theme-btn {
+    background: #fff4df;
+}
+
+/* highlight active theme */
+.theme-btn.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #fff;
+    border-color: transparent;
+}
+
+/* Top bar: search + goal */
+
+.top-bar {
+    margin-top: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.top-bar-left {
+    display: flex;
+    gap: 0.8rem;
+    flex: 1;
+    min-width: 240px;
+    flex-wrap: wrap;
+}
+
+.search-group {
+    min-width: 180px;
+    flex: 1;
+}
+
+.search-group label {
+    display: block;
+    font-size: 0.78rem;
+    margin-bottom: 0.2rem;
+    color: var(--muted);
+}
+
+.search-group input {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid #e0d4ff;
+    background: rgba(255, 255, 255, 0.9);
+    outline: none;
+    font: inherit;
+    transition: border var(--transition), box-shadow var(--transition),
+    background var(--transition), transform var(--transition);
+}
+
+.search-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(179, 136, 255, 0.35);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Goal card */
+
+.goal-card {
+    min-width: 220px;
+    max-width: 280px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    box-shadow: var(--shadow-soft);
+    padding: 0.9rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background: radial-gradient(circle at top right, var(--accent-soft), transparent),
+    radial-gradient(circle at bottom left, var(--accent-strong), transparent);
+    pointer-events: none;
+}
+
+.goal-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+}
+
+.goal-middle {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.goal-form {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.goal-form input {
+    width: 70px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid #e0d4ff;
+    background: #fbf9ff;
+    outline: none;
+    font: inherit;
+}
+
+/* App Layout */
+
+.app {
+    width: min(1100px, 100%);
+    margin: 0 auto 2rem;
+    padding: 0 1rem 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 330px) minmax(0, 1.5fr);
+    gap: 1.5rem;
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem 1.6rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Add Book Form */
+
+.add-book h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.form-row,
+.form-row-inline {
+    margin-bottom: 0.9rem;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    color: var(--muted);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border-radius: 10px;
+    border: 1px solid #e0d4ff;
+    background: #fbf9ff;
+    outline: none;
+    font: inherit;
+    transition: border var(--transition), box-shadow var(--transition),
+    background var(--transition), transform var(--transition);
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(179, 136, 255, 0.25);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+.form-row-inline {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.form-row-inline > div {
+    flex: 1;
+}
+
+.help-text {
+    margin-top: 0.2rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+/* Buttons */
+
+.btn {
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 1.2rem;
+    font: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    transition: transform var(--transition), box-shadow var(--transition),
+    background var(--transition), color var(--transition), border var(--transition);
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #fff;
+    width: 100%;
+    margin-top: 0.4rem;
+    box-shadow: 0 10px 20px rgba(179, 136, 255, 0.4);
+}
+
+.btn.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 25px rgba(179, 136, 255, 0.45);
+}
+
+.btn.small {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid #e5d4ff;
+    color: var(--muted);
+}
+
+.btn.ghost:hover {
+    background: #f7f2ff;
+}
+
+body[data-theme="dark"] .btn.ghost:hover {
+    background: #251b3a;
+}
+
+body[data-theme="paper"] .btn.ghost:hover {
+    background: #fff3e3;
+}
+
+.btn.danger {
+    background: #ffe5ea;
+    color: var(--danger);
+}
+
+/* Shelves */
+
+.shelves {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.shelf {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.shelf::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    background: radial-gradient(circle at top left, var(--accent-soft), transparent),
+    radial-gradient(circle at bottom right, var(--accent-strong), transparent);
+    pointer-events: none;
+}
+
+.shelf h2 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    font-size: 1.05rem;
+}
+
+.shelf-hint {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 0 0 0.4rem;
+}
+
+.shelf-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    min-height: 40px;
+    padding-bottom: 0.2rem;
+}
+
+/* Drag over state */
+
+.shelf-list.drag-over {
+    outline: 2px dashed rgba(179, 136, 255, 0.6);
+    outline-offset: 4px;
+}
+
+/* Empty state */
+
+.empty-msg {
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: #fbf9ff;
+    border-radius: 12px;
+    padding: 0.7rem 0.8rem;
+    text-align: center;
+}
+
+/* Book Cards */
+
+.book-card {
+    background: var(--bg-card);
+    border-radius: 14px;
+    padding: 0.7rem 0.8rem;
+    box-shadow: 0 6px 16px rgba(50, 30, 80, 0.06);
+    border: 1px solid rgba(197, 178, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 0.6rem;
+    transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition), background var(--transition), opacity 0.15s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(50, 30, 80, 0.12);
+    border-color: var(--accent);
+}
+
+.book-card.dragging {
+    opacity: 0.5;
+}
+
+/* Cover */
+
+.book-cover {
+    width: 52px;
+    height: 72px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    background-color: #e7ddff;
+    flex-shrink: 0;
+}
+
+body[data-theme="dark"] .book-cover {
+    background-color: #33244f;
+}
+
+body[data-theme="paper"] .book-cover {
+    background-color: #f1dcc0;
+}
+
+/* Main text */
+
+.book-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+}
+
+.book-text {
+    flex: 1;
+}
+
+.book-title {
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+}
+
+.book-author {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.book-meta {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+}
+
+/* Tags */
+
+.book-tags {
+    margin-top: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.tag-pill {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(179, 136, 255, 0.12);
+    color: var(--muted);
+}
+
+/* Rating stars */
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.95rem;
+}
+
+.rating button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.rating .star {
+    color: #d0c5ff;
+}
+
+.rating .star.filled {
+    color: #ffc75a;
+}
+
+/* Progress */
+
+.progress-wrap {
+    margin-top: 0.5rem;
+}
+
+.progress-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.1rem;
+}
+
+.progress-bar {
+    height: 0.45rem;
+    border-radius: 999px;
+    background: #f2ecff;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+    transition: width var(--transition);
+}
+
+/* Actions */
+
+.book-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.status-select {
+    font-size: 0.75rem;
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+    border-radius: 999px;
+    border: 1px solid #e1d5ff;
+    background: #fbf9ff;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+/* Footer */
+
+.app-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding: 1rem 0 1.4rem;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .app {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .shelves {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .header-main {
+        flex-direction: column;
+    }
+    .top-bar {
+        flex-direction: column;
+    }
+    .goal-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel {
+        padding: 1.2rem 1.1rem;
+    }
+
+    .shelf {
+        padding: 0.8rem;
+    }
+
+    .book-card {
+        flex-direction: row;
+    }
+}

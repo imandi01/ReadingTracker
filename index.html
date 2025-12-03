@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reading Tracker 📚</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="light">
+<header class="app-header">
+  <div class="header-main">
+    <div>
+      <h1>Reading Tracker <span>📖</span></h1>
+      <p class="tagline">Track your books, pages, vibes & goals in one cozy place.</p>
+    </div>
+
+    <!-- Theme toggle -->
+    <div class="theme-toggle">
+      <button class="theme-btn" data-theme="light">Light</button>
+      <button class="theme-btn" data-theme="paper">Paper</button>
+      <button class="theme-btn" data-theme="dark">Dark</button>
+    </div>
+  </div>
+
+  <!-- Search + Filter + Yearly Goal -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="search-group">
+        <label for="search-input">Search</label>
+        <input
+                id="search-input"
+                type="text"
+                placeholder="Search by title or author..."
+        />
+      </div>
+
+      <div class="search-group">
+        <label for="tag-filter-input">Tag / genre filter</label>
+        <input
+                id="tag-filter-input"
+                type="text"
+                placeholder="e.g. fantasy, romance"
+        />
+      </div>
+    </div>
+
+    <div class="goal-card">
+      <div class="goal-top">
+        <span class="goal-label">Yearly reading goal</span>
+        <span id="goal-year"></span>
+      </div>
+      <div class="goal-middle">
+        <span id="goal-progress"></span>
+      </div>
+      <form id="goal-form" class="goal-form">
+        <label for="goal-input">Books goal</label>
+        <input id="goal-input" type="number" min="1" placeholder="e.g. 20" />
+        <button type="submit" class="btn small primary">Set</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="app">
+  <!-- Add Book Form -->
+  <section class="panel add-book">
+    <h2>Add a Book</h2>
+    <form id="book-form">
+      <div class="form-row">
+        <label for="book-title">Title</label>
+        <input id="book-title" type="text" required placeholder="e.g. The Night Circus" />
+      </div>
+
+      <div class="form-row">
+        <label for="book-author">Author</label>
+        <input id="book-author" type="text" required placeholder="e.g. Erin Morgenstern" />
+      </div>
+
+      <div class="form-row-inline">
+        <div>
+          <label for="book-pages-total">Total pages</label>
+          <input id="book-pages-total" type="number" min="1" required placeholder="400" />
+        </div>
+        <div>
+          <label for="book-pages-read">Pages read</label>
+          <input id="book-pages-read" type="number" min="0" value="0" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="book-tags">Tags / genres (comma separated)</label>
+        <input
+                id="book-tags"
+                type="text"
+                placeholder="e.g. fantasy, romance, magic"
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="book-status">Shelf</label>
+        <select id="book-status">
+          <option value="want">Want to read</option>
+          <option value="reading">Currently reading</option>
+          <option value="done">Finished</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="book-cover">Cover image (optional)</label>
+        <input id="book-cover" type="file" accept="image/*" />
+        <p class="help-text">Image is stored locally in your browser (no upload to server).</p>
+      </div>
+
+      <button type="submit" class="btn primary">Add to Shelf</button>
+    </form>
+  </section>
+
+  <!-- Shelves -->
+  <section class="shelves">
+    <div class="shelf" data-status="want">
+      <h2>Want to Read 📝</h2>
+      <p class="shelf-hint">Drag cards to other shelves to move them.</p>
+      <div class="shelf-list" id="shelf-want"></div>
+    </div>
+
+    <div class="shelf" data-status="reading">
+      <h2>Currently Reading ⏳</h2>
+      <p class="shelf-hint">Keep these updated as you read.</p>
+      <div class="shelf-list" id="shelf-reading"></div>
+    </div>
+
+    <div class="shelf" data-status="done">
+      <h2>Finished ✅</h2>
+      <p class="shelf-hint">These count toward your yearly goal.</p>
+      <div class="shelf-list" id="shelf-done"></div>
+    </div>
+  </section>
+</main>
+
+
+<script src="script.js" defer></script>
+</body>
+</html>
