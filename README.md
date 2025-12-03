@@ -59,6 +59,7 @@ Dark Mode
 
 Saves theme in localStorage
 
+<img width="1172" height="755" alt="SS" src="https://github.com/user-attachments/assets/4d084901-35ec-41dd-9a4f-8e7f6b27342e" />
 
 # 🧠 Tech Stack
 
