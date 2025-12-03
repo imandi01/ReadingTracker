@@ -78,4 +78,5 @@ GitHub Pages	deployment
 IntelliJ / Codespaces	development
 
 
+<img width="1172" height="755" alt="SS" src="https://github.com/user-attachments/assets/8695775f-35c4-40d6-afac-c7fca4af68ae" />
 
