@@ -1,82 +1,67 @@
-#📚 Aesthetic Reading Tracker + Bookshelf App
+# 📚 Aesthetic Reading Tracker + Bookshelf App
 
-A cozy, aesthetic web app that helps you track your books, measure reading progress, and organize your personal bookshelf — all built with pure HTML, CSS, and JavaScript.
-
-No backend.
-No frameworks.
-Everything runs in the browser and saves automatically using localStorage.
-Perfect for readers, students, and book lovers.
-
-✨ Features
-📖 Add & Track Books
-
-Book Title
-
-Author
-
-Total pages
-
-Pages read
-
-Status: Want → Reading → Finished
-
-🗂️ Smart Bookshelves
-
-Books automatically sort into:
-
-Want to Read
-
-Currently Reading
-
-Finished
-
-📊 Animated Progress Bars
-
-Every book shows:
-
-progress percentage
-
-pages read / total pages
-
-pastel gradient progress bar
-
-🧠 Quick Actions
-
-➕ Add +10 pages
-
-✔️ Mark a book as finished
-
-🗑️ Delete a book
-
-🔄 Move a book to another shelf
-
-💾 Saves Automatically
-
-Books and progress are stored in localStorage, so your shelf stays even after closing the browser.
-
-🎨 Aesthetic UI
-
-Pastel color palette
-
-Soft glassmorphism cards
-
-Rounded corners
-
-Drop shadows
-
-Responsive grid layout
-
-Mobile-friendly
-
-🧠 Tech Stack
-Technology	Use
-HTML5	structure
-CSS3	styling, layout, gradients, responsiveness
-JavaScript (ES6)	DOM updates, book management, localStorage
-localStorage API	persistent data
-GitHub Pages	deployment
-IntelliJ / Codespaces	development
+A fully client-side HTML + CSS + JavaScript reading tracker with shelves, covers, star ratings, tags, search, yearly reading goals, drag-and-drop, and multiple themes — all saved using localStorage.
 
 
-<img width="1172" height="755" alt="SS" src="https://github.com/user-attachments/assets/8695775f-35c4-40d6-afac-c7fca4af68ae" />
+# ⭐ Features
+📖 Book Management
 
+Add books with title, author, pages, status, tags, rating, cover
+
+Upload book covers (stored locally)
+
+1–5 ⭐ star ratings
+
+Genre/tag chips
+
+Automatic shelf sorting (Want → Reading → Finished)
+
+🗂️ Smart Shelves
+
+Three shelves:
+
+Want to Read 📝
+
+Currently Reading ⏳
+
+Finished ✅
+
+Drag & drop books between shelves
+
+Status dropdown also moves books
+
+🔍 Filters & Search
+
+Search by title
+
+Search by author
+
+Filter by tags/genres
+
+Both filters work together
+
+📊 Yearly Reading Goals
+
+Set a yearly goal
+
+Tracks number of books completed in the current year
+
+Displays progress like:
+7 / 20 books finished
+
+🎨 Themes
+
+Light Mode
+
+Paper Mode
+
+Dark Mode
+
+Saves theme in localStorage
+
+
+# 🧠 Tech Stack
+
+HTML5	- App structure
+CSS3 -	Styling, themes, layout
+JavaScript (ES6) - 	Logic, DOM, rating, filtering, drag & drop
